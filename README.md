@@ -77,3 +77,37 @@ Lets say for example instead of navigating to your desired folder to create a re
 1. Now you type ```$ rm -rf .git```
 1. This will delete the the **.git** folder thus removing this directory as a repository
 1. To make sure we were successful we type a ```$ git status```, if the response is ```Not a git repository``` then you did it
+
+## Stashing work
+
+On some cases you might want to work on something else but commiting your current changes would just mess up the project.
+Our answer to this problem is ```$ git stash```
+* firstly we are going to do a ```$ git status```
+* something like this should pop out
+```
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   fewf.txt
+```
+* now you don't want to commit this because it is unfinished, but you don't want to lose it either
+* so we type ```$ git stash``` and this will show
+```
+Saved working directory and index state WIP on master: [commit number] [commit name]
+```
+* now if we run a git status again we will see that there is nothing to commit
+But what if we stash a lot of things
+* if we run ```$ git stash list``` we are going to see a list with all our stashes
+```
+stash@{0}: WIP on master: [commit no 1] [name1]
+stash@{1}: WIP on master: [commit no 2] [name2]
+stash@{2}: WIP on master: [commit no 3] [name3]
+```
+
+After we are all done with stashing our work there will come the time to bring them back
+* for that to work we can just type ```$ git stash apply``` and our most recemt stash will appear. But if we want an older one we can type ```$ git stash apply stash@{2}``` and thats specified stash will come instead.
+
+When you have your work again and you are sure you don't need it in your stash anymore type ```$ git stash drop stash@{0}``` to remove it from the list of your stashed workings.
