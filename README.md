@@ -18,6 +18,10 @@ When working as team there will be times where many people will work on the same
 1. If you would like to switch to a branch that already exists type ```$ git checkout [BranchName]```
 1. If you don't know the branch name type ```$ git branch -av``` to view all the remote and local branches
 
+There are more commands that are helpfull with branches.
+```$ git branch --merged``` will show all the merged branches
+```$ git branch --no-merged``` will show all the branches that are not merged
+
 ## Merge / Pull Requests
 
 After finishing some work on a branch the next step would be to merge these changes with either master or another branch.
@@ -34,13 +38,13 @@ But if you are working with other people to avoid easily avoided errors, before 
 
 ## Revert / Fake delete
 
-At one point there migth be a chance that you commit something and then regret it. So how do remove that mistake from our repo?
+At one point there migth be a chance that you commit something and then regret it. So how do we remove that mistake from our repo?
 >> This will not remove the commit from the history, it will remove the changes that were intoduced in that commit as a new commit. This is done so that commit numbers will not be mixed between team members
 1. On our terminal we type ```$ git log```. This will give us a list of our commits
 1. All the commits will have a huge commit number like this *20fe6cb967f2a674d74a25f3a615343e096ea0e8*
 1. We take the first 6 letetrs of that commit, in this case *20fe6c*
 1. And we type ```$ git revert 20fe6c```
-1. When we type ```$ git log``` again we will see that the latest commit has a description that says that this commit commit number's changes have been reverted.
+1. When we type ```$ git log``` again we will see that the latest commit has a description that says that this commit number changes have been reverted.
 
 ## Reset
 
@@ -97,6 +101,14 @@ Changes to be committed:
 * so we type ```$ git stash``` and this will show
 ```
 Saved working directory and index state WIP on master: [commit number] [commit name]
+```
+* On the case above all the files that are untracked will not be stashed. If we want to stash these files as well we can
+```
+$ git stash --include-untracked
+```
+* this version of git stash does not include ignored files. To stash ignored files as well we do
+```
+$ git stash --all
 ```
 * now if we run a git status again we will see that there is nothing to commit
 But what if we stash a lot of things
