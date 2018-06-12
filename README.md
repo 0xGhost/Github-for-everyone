@@ -19,8 +19,8 @@ When working as team there will be times where many people will work on the same
 1. If you don't know the branch name type ```$ git branch -av``` to view all the remote and local branches
 
 There are more commands that are helpfull with branches.
-```$ git branch --merged``` will show all the merged branches
-```$ git branch --no-merged``` will show all the branches that are not merged
+* ```$ git branch --merged``` will show all the merged branches
+* ```$ git branch --no-merged``` will show all the branches that are not merged
 
 ## Merge / Pull Requests
 
@@ -54,6 +54,8 @@ If you are working on a seperate branch that no one else is working on you can u
 1. We take the first 6 letetrs of that commit, in this case *20fe6c*
 1. We type ```$ git reset --hard [commitNo]```
 1. When we check our git log now we will see that alll commits that were introduced after our commit number are now gone
+* There is also another version of reset, ```$ git reset --soft [commitNo]```, the difference between hard and soft is that hard will reset your working tree and files, but soft will just move to the commit, keeping the files unchanged and having them ready for commit
+* Finally there is ```$ git reset --mixed [commitNo]``` as well. This will keep the files unchanged but it will not have them ready to commit
 >> Remember to always commit and push in your branch
 
 ## Release
